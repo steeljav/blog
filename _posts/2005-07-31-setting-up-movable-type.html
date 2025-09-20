@@ -1,0 +1,49 @@
+---
+layout: post
+title: Setting Up Movable Type
+date: 2005-07-31 07:55:08.000000000 -05:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- reallyoldblog
+tags:
+- reallyoldblog
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>There are a lot of articles on this topic out there, but I don't think that I found one that described my setup. The MT instructions are pretty decent, but not perfect. So, I thought I would take a few minutes to explain how I set up MT and what I did to get it all working.</p>
+<p><u>The Machine, Perl and Apache</u><br />
+I am using MT on a Sun Sparcstation 5 running Apache and NetBSD. The first thing I needed to do was install perl and the required modules. On NetBSD this is a piece of cake using the pkg_add command. The only problem is that NetBSD does not place non-default packages in the root installation directories. So, all of the cgi scripts that started with #!/usr/bin/perl would not work. The MT installation instructions recommend that you change the line in the files. I said no thanks and instead made a symbolic link using 'ln -s /usr/pkg/bin/perl /usr/bin/perl'.</p>
+<p>I had previously installed Apache so I was able to skip this. When I installed Apache, I read the security recommendations and disallowed access to all directories by default so that only specifically designated directories were accessible. See <a href="http://httpd.apache.org/docs/1.3/misc/security_tips.html">this</a> for more information. I did not want to run MT in a /cgi-bin under the DocumentRoot directory. I wanted to run MT from a /cgi-bin under my /home/billy/public_html directory.</p>
+<p>I had turned off cgi completely because I did not plan on using cgi. MT is cgi, so I needed to get it working. I looked through the Apache documentation for about 30 seconds to find what I needed. Access to my /home/billy/public_html directory was already set up so I just needed to add</p>
+<p>&lt;Directory /home/billy/public_html/cgi-bin&gt;<br />
+    Options +ExecCGI<br />
+    AddHandler cgi-script .cgi<br />
+&lt;/Directory&gt;</p>
+<p>to my httpd.conf file.</p>
+<p>One other thing that I should mention about the Apache setup is that you do not have to have mod_php, or mod_perl installed. If you think that your blog is going to get really popular you may want to install these modules, but if you are running your weblog on a home server over a cable or dsl connection, you probably don't have enough bandwidth to have to worry about it anyway. So, if you don't have either of these installed, don't worry about it. You don't need either of them to get up and running.</p>
+<p><u>The DB</u><br />
+I chose to use SQLite for the database. I like SQLite because it is simple, and does not require administration. Since I do not expect a flood of traffic to my site, and do not have the bandwidth to support a flood anyway, SQLite is perfect for me. SQLite uses a flat file for all of its storage. MT (or cgi scripts running as user www rather) needs for the database (flat file) to be world writable. I created a directory under my home directory /home/billy for the database. Use the command chmod -R 777 /home/billy/dbdir to make the directory world writable.</p>
+<p><u>Creating the Directories</u><br />
+The MT installation instructions tell you to create three directories, cgi-bin, mt-static, and a weblog directory. I was a little confused by the wording of this, so I had it wrong the first time. My final setup looked like this:</p>
+<p>/home/billy/public_html<br />
+  ./mt-static<br />
+  ./cgi-bin<br />
+  ./blog</p>
+<p>follow the installation instructions for copying the specific files into the proper directories. I don't want to say much about what files go where because this could easily change. One thing I will mention about the permissions though is that if you download the source as a MT.tgz or MT.tar.gz file and upload the entire archive to your server you won't have to sweat the binary/ascii details of ftp.</p>
+<p><u>Finishing Up</u><br />
+The next thing to do was to edit mt.cfg. The changes that I needed to make were for:</p>
+<p>  CGIPath http://www.billybryant.net/cgi-bin/<br />
+  ObjectDriver DBI::sqlite<br />
+  Database /home/billy/dbdir<br />
+  StaticWebPath http://www.billybryant.net/mt-static</p>
+<p>I initially set the StaticWebPath to something like /home/billy/public_html/mt-static because that is what the configuration file says, but it did not work. MT could not find any of the gifs and other files. It looked terrible.</p>
+<p>Once this was finished up I opened http://www.billybryant.net/cgi-bin/mt-check.cgi which worked fine. I next ran http://www.billybryant.net/cgi-bin/mt-load.cgi which also worked fine. After removing the mt-load.cgi script from my cgi directory I opened up the MT front page at http://www.billybryant.net/cgi-bin/mt.cgi. I followed the instructions and logged in as user:Melody passwd:Nelson (my mom had a friend named Melody, I always thought it was a cool name for a girl, but I have to wonder, who is Melody Nelson?). The first thing that you should do is change the default user name and password. From there you will want to go into Weblog Config and set some things up. Notably, you will want to change the weblog name. I also changed:</p>
+<p>  local site path = /home/billy/public_html/blog<br />
+  site url = http://www.billybryant.net/blog</p>
+<p>and also the archive site path and url which is the same as these with archive appended.</p>
+<p>After this I was up and running. I hope this helps you.</p>
+<p></body></html></p>

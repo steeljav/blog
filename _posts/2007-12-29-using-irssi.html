@@ -1,0 +1,23 @@
+---
+layout: post
+title: Using irssi
+date: 2007-12-29 07:50:08.000000000 -05:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- generaltech
+tags:
+- oldblog
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>I started using <a href="http://irssi.org">irssi</a> for IRC a few weeks ago. It is really a nice client, and if you know perl, you can do a lot with it through scripts. The biggest problem that I had with irssi was getting it to auto-connect and auto-identify to servers and then auto-join channels. I was trying to set this stuff up through irssi's startup file, but was not able to get it to work.</p>
+<p>To get irssi to auto-connect and auto-identify with the servers I used </p>
+<p class="quote">&amp;nbsp /server add -auto -network freenode irc.freenode.net 6667 password</p>
+<p>and then to get the channels I used </p>
+<p class="quote">&amp;nbsp /channel add -auto #ruby-lang freenode</p>
+<p>I set everything up manually inside of irssi and then just used the /save command which writes everything out to the ~/.irssi/config file. When I restarted irssi, everything did what I wanted it to do.</p>
+<p></body></html></p>

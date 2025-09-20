@@ -1,0 +1,20 @@
+---
+layout: post
+title: Throwing in the Towel on JNI
+date: 2009-12-12 12:52:44.000000000 -05:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- generaltech
+tags:
+- oldblog
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>I previously stated that I didn't think that JNI was so bad. I still feel that way, but I am having some strange issues that are very difficult to track down. I know the C++ code is good, I know the java code is good, but somehow something in between the two is wrong and it is crashing the JVM. It is really strange because control is back in the JVM when it crashes. The only way to make it work is to use the -Xms option to the JVM and set it to 128M which is ridiculuous.</p>
+<p>I think this basically means that there is a memory leak someplace. I am going to ditch the JNI while I am still ahead and re-write the c++ stuff in java. I am taking several steps backwards by doing this, but if it leads to more reliable, undestandable and maintainable code in the long run then it is worth it. I had good reasons for writing the c++ code and utilizing JNI. Doing this stuff in pure java is going to be a PITA because java does not have a complex number class and does not allow operator overloading.</p>
+<p>My fingers and eyes hurt just thinking about doing this, but I don't really have any other options.</p>
+<p></body></html></p>

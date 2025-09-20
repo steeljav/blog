@@ -1,0 +1,24 @@
+---
+layout: post
+title: How To Copy A Directory Using sftp
+date: 2015-08-28 18:06:51.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- generaltech
+tags: []
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>This should not be so hard but here is what I had to do:</p>
+<ol>
+<li>get -r dir</li>
+<li>locally: mv dir copy_of_dir</li>
+<li>mkdir copy_of_dir</li>
+<li>put -r copy_of_dir</li>
+</ol>
+<p>The remote server complained about Couldn't fsetstat but it worked.</p>
+<p> </body></html></p>

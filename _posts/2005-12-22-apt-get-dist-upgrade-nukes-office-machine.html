@@ -1,0 +1,19 @@
+---
+layout: post
+title: apt-get dist-upgrade nukes office machine
+date: 2005-12-22 10:33:25.000000000 -05:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- reallyoldblog
+tags:
+- reallyoldblog
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>I didn't want to do it, but I knew that I needed to do an apt-get dist-upgrade on my laptop and on my main office machine. For those who do not use Debian or Linux, apt-get dist-upgrade is a command that does an upgrade of the operating system and all of the applications. I have been using Debian for about 6 years now and my experience with it has been mixed. I am always hesitant to use it because of the problems it has caused me in the past. So, I decided to do the laptop first. Everything went pretty smooth, until I restarted the X window system to test it out. No graphics! I did an apt-get remove xserver-xfree86 xserver-xorg, then did an apt-get install xserver-xorg, and everything worked out. I think for some reason that the symbollic link from /etc/X11/X to xserver-xorg did not get created initially.</p>
+<p>The upgrade on the office machine didn't go so well. I lost video, sound and usb. I am working on getting things restored. I installed the pre-built 2.6 kernel provided for Debian, that made X start working again. But, no sound or usb. I have a usb mouse so it was pretty obvious that usb was history. I have decided to build my own kernel for this machine. At least I know where I am at when it is time to upgrade and things don't go so well. The sound problem is probably just issues with alsa, I have never gotten alsa to work. I am pretty confident that I can get alsa working. I don't have a clue what happened to the usb stuff. There are some ugly errors in the output of dmesg. I will build a kernel and go from there.</p>
+<p></body></html></p>

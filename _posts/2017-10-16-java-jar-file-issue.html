@@ -1,0 +1,18 @@
+---
+layout: post
+title: Java Jar File Issue
+date: 2017-10-16 09:40:54.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- other
+tags: []
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body>
+<p>I had a tough to track down issue recently. It turns out that if you have utility.jar and utility_old.jar on the classpath, the JVM loads both in lexicographical order. This means that utility_old.jar is loaded second and any new logic with the same name in utility.jar is replaced by the old logic in utility_old.jar.</p>
+<p>Don't rename jar files to save them. It causes hard to find issues.</p>
+<p></body></html></p>

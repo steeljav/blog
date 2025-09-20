@@ -1,0 +1,32 @@
+---
+layout: post
+title: Should You Develop an Application in R?
+date: 2018-10-13 16:05:59.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- generaltech
+- work
+tags: []
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>NO. Here's why.</p>
+<p>I've been developing in R for about 2 years now. It's not my first programming language. I've developed professionally in C and perl and done many other smallish projects using Matlab, ruby, and java. R is awesome for smaller scripts for data exploration and analysis but is lacking as a general purpose programming language. Specifically ...</p>
+<p>IDE options are somewhat limited. Rstudio is nice, but not on par with PyCharm or InteliJDEA.</p>
+<p>Debugging an R is difficult. It's ok in interactive mode in R studio, but my application doesn't run in interactive mode in R studio. It runs on a headless linux server and debugging options are very limited in this environment. I have to believe that most applications would be running in a similar environment as mine.</p>
+<p>Error handling is problematic. Error handling is based on the common lisp condition system and is supposed to be more general, robust, etc. It doesn't feel that way. Some have stated that the use of R's tryCatch is equivalent to java error handling, but this is not correct. On error, R unwinds the stack to the tryCatch calling point and does not provide a file or line number where the error occurred. Java does not unwind the stack and make it impossible to know where the error occurred. On top of this, R's error messages can be quite cryptic.</p>
+<p>Documentation can be very hard to follow. R has a built in documentation system that provides information by using '?command'. There is a lot of information built into the system, but it is not always well written, can be hard to follow and the examples do not provide results. For example, the following details the examples for the 'summary' command:</p>
+<blockquote><p>summary(attenu, digits = 4) #-&gt; summary.data.frame(...), default precision<br />
+summary(attenu $ station, maxsum = 20) #-&gt; summary.factor(...)</p>
+<p>lst &lt;- unclass(attenu$station) &gt; 20 # logical with NAs<br />
+## summary.default() for logicals -- different from *.factor:<br />
+summary(lst)<br />
+summary(as.factor(lst))</p></blockquote>
+<p>You can run these examples by typing example("summary"), but it would be much better if the output was in the documentation like most programming language documentation.</p>
+<p>R is a functional language, but has had multiple OO systems bolted on over the years. The 2 main OO systems are method dispatch based systems which is probably not what most would consider to be OO. There are at least a few other OO systems that are more modern, but not so prevalent.</p>
+<p>Scattered throughout the R documentation are warnings to discourage developers from using for loops due to speed problems. Developers are instead encouraged to use vectorized functions and the apply family of functions. Trying to avoid the use of for loops feels very unnatural and I have wasted way too much time trying to accomplish it and feel like it is an unnecessary objective. If you are developing an R library for S3/S4 functions then worry about speed if you need to. If you are writing your own application then worry about writing clean, easy to follow and understand logic as you should with any language and deal with performance issues if/when necessary.</p>
+<p>R does have some nice attributes and an incredible number of packages available. But if I were to do things over I would use Python over R for anything besides single file analysis scripts.</body></html></p>

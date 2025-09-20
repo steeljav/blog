@@ -1,0 +1,32 @@
+---
+layout: post
+title: Ruby Makes Linux Journal Front Cover
+date: 2005-07-29 11:40:19.000000000 -05:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- reallyoldblog
+tags:
+- reallyoldblog
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>I just got home and saw the new <a href="http://www.linuxjournal.com">Linux Journal</a>. Ruby made it onto the front cover, and into Reuben's column. The article is about web apps and is the first in a series featuring <a href="http://www.rubyonrails.org">Ruby on Rails</a>. In case you are not into web development Ruby on Rails (RoR) is a web development framework. It makes development of web based applications very simple, comparitively speaking. Some examples of your typical web based app that you might use RoR for would be a blog, a wiki or any web page that requires some type of user input and usually database storage.</p>
+<p>I have played around with RoR a little. I have very little web development experience and I found RoR to be very simple after looking at a <a href="http://www.onlamp.com/pub/a/onlamp/2005/01/20/rails.html">few</a> <a href="http://www.onlamp.com/pub/a/onlamp/2005/03/03/rails.html">examples</a>. I played around with developing a very simple weblog along the lines of <a href="http://www.instiki.org">instiki</a>. I used SQLite for the database because I didn't want the hassle of administrating MySql. </p>
+<p>I haven't played with RoR in a few months due to time constraints, but if I were doing web development for cash, I would be spending a lot of time with RoR.</p>
+<p>I want to mention a few other things in this post that may not really belong here, but since we are talking about Ruby ......</p>
+<p>I have done a considerable amount of scripting in Perl. Perl is ok, except that sometimes it looks like Yosimite Sam explatives and I always felt like its OO support was weak at best. I started playing with Ruby about 3 years ago when I was still at Lockheed. I was amazed at how easy it was to use the socket objects. Want a TCP/IP server? No problem:</p>
+<p>#!/usr/bin/ruby<br />
+require 'socket'<br />
+server = TCPServer.new('localhost', 8000)<br />
+client = server.accept<br />
+loop {# play with client here}</p>
+<p>I used various forms of this extensively for a project that I worked on where I was writing a lot of networking code. When I left Lockheed and started my current position I had no idea that I would be doing so much integration work. My employer did not have a preference, so I used Ruby for everything. The steel mill that I work at is glued together with Ruby, and it has worked great.</p>
+<p>So my point is that if you do not currently know a scripting language, you should learn one. I would say at least learn Perl because there is so much of it out there, but if you are into OO and want something more elegant, then go with Ruby. I am very happy with it and will continue to use it for most programming tasks where I can.</p>
+<p>The other thing I want to say was that if you haven't checked out instiki, I highly advise you to do so. I will probably dedicate a whole post to instiki at some point in the future, so I won't go into too much detail here. Instiki is a zero configuration wiki. It uses ruby's built in webserver Webrick. So, all you need to do is install the Ruby interpreter, then download instiki and run it. Then you will have a wiki running on port 2500 of your machine. It is basically that simple.</p>
+<p>I have been using instiki as a notebook at work for about the last 4 or 5 months. I work in a very fluid, dynamic environment. Things change fast. Work gets dropped or changed, work gets added and I get interrupted frequently. Using instiki as my notebook has really helped me to organize. If I have notes that I want to update at home, instiki is in one folder and easily fits on a usb drive making it very mobile. The only thing required to run it is the Ruby interpreter. Since you can get a Ruby interpreter for all major platforms, Ruby and instiki are cross platform. Another big plus for me since I use M$ windoze at work and Linux at home.</p>
+<p>If you have never used a wiki before, some nice wikis to check out are <a href="http://urchin.earth.li/cgi-bin/twic/wiki/view.pl?page=WardsWiki">Ward's Wiki</a> and definitely check out <a href="http://www.wikipedia.org">wikipedia</a>. I will say more about instiki in a future post.</p>
+<p></body></html></p>

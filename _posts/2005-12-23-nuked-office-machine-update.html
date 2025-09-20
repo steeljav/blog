@@ -1,0 +1,21 @@
+---
+layout: post
+title: Nuked Office Machine Update
+date: 2005-12-23 09:20:45.000000000 -05:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- reallyoldblog
+tags:
+- reallyoldblog
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>The office machine is mostly operational again. The first thing I did was install the Debian package for the 2.6.12 kernel. I use the testing distribution of Debian, which is at 2.4 something still by default. I'm not sure why, but if I boot the 2.4 kernel, X does not work. It does work with the 2.6.12 kernel, so that is fine with me. </p>
+<p>I'm not sure what is going on with the usb problem. My mouse is usb, so it was kind of a big deal. I use a 4-port usb hub on my desktop to plug the mouse, camera, pod etc. into. For some reason, the hub quit working. From the logs it looks like there is a problem with assigning it an ID. I plugged my devices directly into the PC and everything works fine. Strange. I don't have to fix it now, but I will need to fix it eventually because of my usb thumb drive. I use it extensively.</p>
+<p>I finally got ALSA to work on this machine. I needed to modify /etc/modutils/alsa-base to add the line for the via82xx alias. Then I ran alsamixer and found that all of the volumes were turned down completely and muted. When something is muted in alsamixer it is displayed as [off]. To turn it on/un-mute it, use the 'm' key. I still don't get anything out of the midi test from the kde sound configuration. Not sure what the deal is with that.</p>
+<p>So, I am mostly back in business. I was thinking that if I worked from home, and this was my work machine, apt-get dist-upgrade's would be pretty dangerous. Since I am planning to work from home someday, I better come up with a process to ensure I always have a machine available for work.</p>
+<p></body></html></p>
