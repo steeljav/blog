@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "New BLog Post"
 date:   2025-09-20 14:01:57 -0400
-categories: jekyll update
+categories: general
+published: false
 ---
 # A First Post
 This is a new line in the default post
