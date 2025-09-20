@@ -1,0 +1,172 @@
+---
+layout: post
+title: Max Arc Power Update
+date:
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: private
+categories:
+- steeltech
+tags: []
+meta:
+  _edit_last: '98945915'
+  restapi_import_id: 5984dca338881
+  original_post_id: '1664'
+  _wp_old_slug: '1664'
+author:
+  login: steeljav
+  email: bbryant@gmail.com
+  display_name: billy
+  first_name: Billy
+  last_name: Bryant
+permalink: "/2015/09/07/max-arc-power-update/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>[latexpage]</p>
+<p>Several years ago when I was consulting full time I wrote this article. Back then I was using different blog software and imported all of these old posts into WordPress when I switched. Unfortunately some of the posts including this one were garbled. I recently got a new Macbook and so wanted to try out several things and decided to revise this article in order to do so. I really enjoy doing the research and writing these technical posts based on the results, but it is incredibly time consuming and I just haven't had the time lately. I hope to change this in the future and have a very long list of topics to cover. As always, feedback is welcome and feel free to <a href="https://billybryant.net/contact/">contact me</a> if you have questions.</p>
+<p>This is the third article of a series covering various aspects of AC Electric Arc Furnace (EAF) power system and control technology. The goal of these articles is to provide a high-level analysis of each topic, utilizing more pictures and words than mathematics, however, I deviated from the goal this month and developed something that is almost entirely mathematics. Previous EAF technology articles can be found through <a href="https://billybryant.net/category/steeltech/"> this link</a>.</p>
+<p>The goal of this article is to develop the mathematics to perform back of the envelope calculations for maximum arc power and the secondary current that it occurs at. Additionally a check on the accuracy is performed by comparing the estimates with an EAFAT simulation developed while consulting.</p>
+<p>[caption id="attachment_1671" align="alignleft" width="300"]<a href="http://billybryant.net/wp-content/uploads/2015/09/ecd.png"><img class="wp-image-1671 size-medium" src="{{site.baseurl}}/assets/ecd-300x141.png" alt="Figure 1: Equivalent Circuit Diagram" width="300" height="141"></a> Figure 1: EAF Equivalent Circuit Diagram[/caption]</p>
+<p>Figure 1 is an equivalent circuit diagram (ECD) for an uncompensated EAF (i.e. no SVC, harmonic filters, static predictive line control, etc.). The ECD is an approximation because it fails to take into account the following:</p>
+<ul>
+<li>EAF secondary imbalance</li>
+<li>The time-varying arc reactance.</li>
+</ul>
+<p>The accuracy of the approximation is dependant on the level of EAF imbalance and arc reactance. Experience has shown that the ECD coupled with an appropriate model of arc reactance is a reasonable approximation for most analytical purposes.</p>
+<p>It is important to understand that the mathematics developed below are only applicable to uncompensated EAFs. If there are harmonic filters or an SVC installed at the medium voltage bus the results will not be accurate. The mathematics for analysis with VAR compensation will be developed and posted here at some point in the future.</p>
+<p>[caption id="attachment_1672" align="alignleft" width="220"]<a href="https://billybryant.net/wp-content/uploads/2015/09/z_ang.png"><img class="size-full wp-image-1672" src="{{site.baseurl}}/assets/z_ang.png" alt="Figure 2: Impedance Angle Diagram" width="220" height="230"></a> Figure 2: Impedance Angle Diagram[/caption]</p>
+<p>Figure 2 displays the impedance angle for the equivalent circuit. Note that impedance and impedance angle is as measured from the source unless otherwise indicated.</p>
+<p>Derivation of the total circuit power and maximum arc power using figures 1 and 2 and basic analog circuit analysis is straight-forward.</p>
+<h4><u>Total Power Calculation:</u></h4>
+<p>begin{equation}label{1}<br />
+P = VIcos(theta) = frac{V^2}{Z}cos(theta)<br />
+end{equation}<br />
+begin{equation}label{2}<br />
+Z = Xcsc(theta)<br />
+end{equation}</p>
+<p>Combining ref{1} and ref{2}:<br />
+begin{equation}label{3}<br />
+P = frac{V^2}{X}sin(theta)cos(theta)<br />
+end{equation}<br />
+begin{equation}label{4}<br />
+P_{max} = frac{V^2}{2X}, theta = 45deg<br />
+end{equation}</p>
+<p>From ref{3} it is obvious that the maximum circuit power occurs when $theta = 45 deg$ or at an R / X ratio of 1. Using ref{4} we can calculate a reasonable estimate of the maximum circuit power knowing nothing more than the power base and the per-unit value of short circuit reactance $X_{sc}$ (recall that V = 1 pu on the transmission voltage base in a per unit system). The estimated value will be slightly high due to the use of $X_{sc}$ as opposed to the operating reactance $X_{op}$ which would include the missing $X_{arc}$ component mentioned previously. It will be shown that this is still a reasonable estimate under certain conditions.</p>
+<p>Note that ref{4} can be simplified further. When using a per-unit system the source voltage is unity. In the USA it is typical to specify the per-unit values of power system components on a 100 MVA base. Taking these two factors into account ref{4} becomes:<br />
+begin{equation}<br />
+P_{max} = 100 * frac{1^2}{2X_{sc}} MW<br />
+end{equation}<br />
+begin{equation}label{5}<br />
+P_{max} = frac{50}{X_{sc}} MW<br />
+end{equation}</p>
+<p>This is an incredible result. It shows that if you are able to estimate and/or calculate the per-unit short circuit reactance on the correct power base, you can calculate a reasonable estimate of the maximum total circuit power!</p>
+<p><u>Calculating Arc Power:</u><br />
+To calculate arc power it is necessary to know the EAF secondary impedance. EAF secondary impedance is measured by performing a short-circuit dip test. It is recommended that a dip test be performed any time an EAF secondary component is replaced or modified (eg. delta closure, high current cables, EAF arms).</p>
+<p>Arc power can be calculated from the following:<br />
+begin{equation}label{6}<br />
+frac{1}{2} sin(2theta) = sin(theta)cos(theta)<br />
+end{equation}</p>
+<p>Combining ref{3} and ref{6} and subtracting the losses:<br />
+begin{equation}label{7}<br />
+P_{arc} = frac{V^2}{2X}sin(2theta) - I^2R_{sc}<br />
+end{equation}</p>
+<p>where $R_{sc}$ is the short circuit resistance. Unless otherwise noted, the impedance variables denote short circuit values for the remainder of this analysis and the sc will be dropped. Only the EAF secondary resistance measured from a dip-test is considered for this analysis. In most cases the only other non-negligible source of resistance might be a long (&gt; 2000') cable routed between the step-down transformer secondary and series reactor or EAF transformer primary.</p>
+<p>Using Figure 1 and ref{2} it is obvious that the current can be re-written as:<br />
+begin{equation}label{8}<br />
+I^2 = [frac{V}{X}sin(theta)]^2<br />
+end{equation}<br />
+Combining ref{7} and ref{8}<br />
+begin{equation}<br />
+P_{arc} = frac{V^2}{2X}sin(2theta) - (frac{V}{X})^2 Rsin(theta)^2<br />
+end{equation}<br />
+which can be simplified further into<br />
+begin{equation}label{9}<br />
+P_{arc} = frac{V^2}{X}[frac{1}{2}sin(2theta) - frac{R}{X}sin(theta)^2]<br />
+end{equation}</p>
+<p>Several observations can be made from ref{9}. $P_{arc}$ is proportional to the square of the source voltage. Small changes in transmission voltage can have a noticeable impact on EAF performance (both positive and negative). This is especially true for EAFs that are voltage limited. This observation coupled with the fact that current is typically the constraining parameter indicates the importance of a stable voltage source for many EAFs. As an example consider that a 5% increase in transmission voltage results in a 10% increase in arc power. Conversely, a 5% decrease in transmission voltage results in a -10% decrease in arc power. Utility contracts (in the USA anyway) usually stipulate a +-5% variance in voltage level as acceptable. A voltage swing from +5% to -5% can result in a change in arc power of 20%! This helps to explain why some EAFs exhibit seasonal performance variations.</p>
+<p>To find the maximum $P_{arc}$ it is necessary to maximize the bracketed quantity in ref{9}. This is accomplished by taking the partial derivative with respect to $theta$, setting the result equal to zero and solving for $theta$.</p>
+<p>begin{equation}<br />
+frac{partial}{partialtheta}[frac{1}{2}sin(2theta) - frac{R}{X}sin(theta)^2] = 0<br />
+end{equation}</p>
+<p>begin{equation}<br />
+-cos(2theta) + frac{2R}{X}sin(theta)cos(theta) = 0<br />
+end{equation}</p>
+<p>Utilizing ref{6} for the second term<br />
+begin{equation}<br />
+-cos(2theta) + frac{R}{X}sin(2theta) = 0<br />
+end{equation}</p>
+<p>begin{equation}<br />
+frac{R}{X}sin(2theta) = cos(2theta)<br />
+end{equation}</p>
+<p>begin{equation}<br />
+frac{R}{X} = frac{cos(2theta)}{sin(2theta)}<br />
+end{equation}</p>
+<p>begin{equation}<br />
+frac{X}{R} = tan(2theta)<br />
+end{equation}</p>
+<p>begin{equation}<br />
+arctan(frac{X}{R}) = 2theta<br />
+end{equation}</p>
+<p>begin{equation}label{10}<br />
+theta_{max} = frac{1}{2}arctan(frac{X}{R})<br />
+end{equation}</p>
+<p>Equation ref{10} provides the impedance angle where the arc power peak is located. As a reminder, these are short circuit quantities.</p>
+<p><u>Example:</u><br />
+Assume we are working with an EAF that has the following specifications:</p>
+<ul>
+<li>100 MVA Power Base</li>
+<li>161 KV, 14.4 KV, 0.522 KV Voltage Bases</li>
+<li>1000 MVA Short Circuit Level ($S_{sc}$)</li>
+<li>50 MVA, 11%, 161/14.4 KV Step-Down Transformer</li>
+<li>30 MVA, 3%, 13.8/0.5 KV EAF Transformer</li>
+<li>Secondary Impedance: $Z_2$ = 0.35 + j2.94 $10^{-3}Omega$</li>
+</ul>
+<p>Converting everything into per-unit:<br />
+begin{gather*}<br />
+text{Transmission System Reactance: }frac{100 MVA}{1000 MVA} = 0.1 pu \<br />
+text{Step-Down Transformer: }0.11frac{100 MVA}{50 MVA} = 0.22 pu \<br />
+text{EAF Transformer: }0.03frac{100 MVA}{30 MVA}(frac{13.8}{14.4})^2 = 0.0918 pu \<br />
+text{Secondary System: }frac{(0.35 + j2.94)10^{-3}}{frac{0.522^2}{100}} = 0.1284 + j1.079 pu<br />
+end{gather*}</p>
+<p>Adding the per-unit values results in $X_{sc}$ = 1.491 pu and $R_{sc}$ = 0.1284 pu.</p>
+<p>Substituting these values into ref{10}:<br />
+begin{equation*}<br />
+theta_{max} = frac{1}{2}arctan(frac{1.491}{0.1284}) = 42.54 text{ degrees}<br />
+end{equation*}</p>
+<p>Substituting $theta_{max}$ into ref{9} to calculate the maximum $P_{arc}$:<br />
+begin{equation*}<br />
+P_{arc} = frac{1}{1.491}[0.5sin(2*42.54) - frac{0.1284}{1.491}sin(42.54)^2] = 0.3077pu<br />
+end{equation*}<br />
+Recalling that the power base is 100 MVA, results in an arc power maximum of <u>30.77 MW</u></p>
+<p>Many EAF control systems utilize secondary current as the independent/control variable. Additionally the EAF transformer, high-current cables and electrodes are current limited. Therefore it is convenient to consider secondary current as the independent variable (in reality it never is). To calculate the secondary current where the maximum arc power is located recall:</p>
+<p>$I = frac{V}{Z}$</p>
+<p>From ref{2}:</p>
+<p>$Z = Xcsc(theta)$</p>
+<p>Combining:<br />
+begin{equation}label{11}<br />
+I = frac{V}{X}sin(theta)<br />
+end{equation}<br />
+begin{equation*}<br />
+I = frac{1}{1.491}sin(42.54) = 0.4535pu<br />
+end{equation*}</p>
+<p>Calculating the secondary current base:<br />
+begin{equation*}<br />
+I_{2b} = frac{100}{0.522sqrt{3}} = 110.6KA<br />
+end{equation*}</p>
+<p>Which results in:</p>
+<p>$I_2 = 0.4535 * 110.6 =$ <u>50.15 KA</u></p>
+<p>[caption id="attachment_1670" align="alignleft" width="300"]<a href="http://billybryant.net/wp-content/uploads/2015/09/arc_power_stable.png"><img src="{{site.baseurl}}/assets/arc_power_stable-300x236.png" alt="Figure 3: Arc Power Stable Melting" width="300" height="236" class="size-medium wp-image-1670"></a> Figure 3: Arc Power Stable Melting[/caption]</p>
+<p>Figure 3 is the arc power curve for the example EAF. The curve was generated using the Bryant Solutions Electric Arc Furnace Analysis Tool (EAFAT). An arc reactance model was utilized and configured to represent refine/heating conditions. Maximum arc power is delivered at approximately 50 KA and is approximately 30 MW.</p>
+<p>Figure 3 indicates that the approximation is very reasonable for stable melting conditions. However, the approximation will not be as accurate during rough melting conditions. This is because the short circuit reactance was used in the calculations, neglecting the arc reactance.</p>
+<p>[caption id="attachment_1669" align="alignleft" width="300"]<a href="https://billybryant.net/wp-content/uploads/2015/09/arc_power_melting.png"><img src="{{site.baseurl}}/assets/arc_power_melting-300x243.png" alt="Figure 4: Arc Power Unstable Melting" width="300" height="243" class="size-medium wp-image-1669"></a> Figure 4: Arc Power Unstable Melting[/caption]</p>
+<p>Figure 4 is the arc power curve for the same EAF but with the arc reactance model configured for unstable melting conditions. The curve indicates that the approximation is less accurate for unstable melting conditions. The curve shows that the peak power is reduced to approximately 27 MW. The curve indicates that maximum power is located at approximately the same secondary current (~50 KA), however this may not always be the case and should not be assumed to be correct.</p>
+<p>The accuracy of the estimation during rough melting conditions can be improved by accounting for the missing reactance. There are several methods to estimate arc reactance at different phases of melting. A simple method to estimate the arc reactance is to measure the average total secondary MVAR and secondary current during the melting phase of interest. The secondary reactance is already known from the dip-test and so the increase in reactance can be calculated by subtracting the secondary reactance from what is measured. Mathematically:</p>
+<p>begin{equation*}<br />
+X_{arc} = frac{Q_{total}}{3I_{2}^2} - X_{2}<br />
+end{equation*}</p>
+<p>$X_{arc}$ can be converted into per-unit and added to the system reactance. As my college professors liked to say "this is left as an exercise for the reader." E-mail me if you require help with this or have questions.</p>
+<p><u>Summary:</u><br />
+ref{9}, ref{10} and ref{11} are good approximations for stable melting conditions. If these approximations are used to estimate maximum arc power and secondary current for non-stable melting conditions, it is necessary to account for the arc reactance using some method such as the one described above.</body></html></p>

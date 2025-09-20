@@ -1,0 +1,47 @@
+---
+layout: post
+title: EAF Power Factor and Issues With Its Use
+date:
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: private
+categories:
+- steeltech
+tags:
+- oldblog
+meta:
+  _edit_last: '98945915'
+  restapi_import_id: 5984dca338881
+  original_post_id: '62'
+  _wp_old_slug: '62'
+author:
+  login: steeljav
+  email: bbryant@gmail.com
+  display_name: billy
+  first_name: Billy
+  last_name: Bryant
+permalink: "/2009/12/06/eaf-power-factor-and-issues-with-its-use/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>Power factor is a popular measurement for Electric Arc Furnace (EAF) operating point selection and analysis. The main reasons for this appear to be its ubiquity in EAF operations control rooms and its intuitive interpretation. Unfortunately use of the metric in this context has several shortcomings. It is often misunderstood and used improperly. Some of the problems with the use of EAF power factor are elaborated below. EAF power factor is normally measured at the EAF transformer primary. For the purpose of this writing EAF power factor implies measurement at the EAF transformer primary unless otherwise noted.</p>
+<p><a href="http://www.billybryant.net/pics/steelmaking/mid_melt_arc_power.png"> <img src="{{site.baseurl}}/assets/mid_melt_arc_power.png" alt="pic" style="float:left;margin:0 5px 4px 0;" width="120" height="120"></a> The first chart provides an arc power curve for an average EAF. The power supply is uncompensated (i.e. no harmonic filters, SVC, etc.), and the curve was calculated for the mid-melting point of a heat. The allowable operating region for the EAF is highlighted with a secondary current mid-point of approximately 50KA. The lower constraint indicates the bound on stability while the upper constraint indicates EAF transformer full load. It can be seen from the chart that a secondary current operating point of approximately 50KA would be a reasonable choice. This operating point is assumed for the remainder of the discussion.</p>
+<p><a href="http://www.billybryant.net/pics/steelmaking/parc_and_pf.png"> <img src="{{site.baseurl}}/assets/parc_and_pf.png" alt="pic" style="float:left;margin:0 5px 4px 0;" width="120" height="120"></a> It is frequently assumed that maximum EAF power input occurs at a power factor of 0.707. This assumption is pervasive and the origin is unclear. The second chart indicates that the assumption is incorrect. The chart provides power factor and normalized arc power and shows that a power factor of 0.707 is achieved at 53KA, while the peak of the arc power curve occurs at approximately 58KA. Therefore in this case the arc power maximum actually occurs at a power factor of 0.65. Every EAF is different and it should not be assumed that this will always be the case.</p>
+<p>Another pervasive assumption is that the stability limit of an EAF occurs at a power factor of 0.82. Again the origin of this assumption is unclear. This will be discussed along with alternative stability metrics in a future post.</p>
+<p><a href="http://www.billybryant.net/pics/steelmaking/pf_time_variance.png"> <img src="{{site.baseurl}}/assets/pf_time_variance.png" alt="pic" style="float:left;margin:0 5px 4px 0;" width="120" height="120"></a> The EAF is a time-varying system (in several aspects). Power factor in the EAF system is a time-varying metric, meaning that its value changes with melting progress. The time-varying characteristic of power factor is detailed in the third chart. Power factor curves vs. secondary current are plotted throughout the melting cycle. Bore-down denotes the beginning of melting and refine denotes the end. The chart shows that if a secondary current set-point of 50KA were maintained throughout a melting cycle, the power factor would increase from 0.62 at the start of the heat to 0.82 at the end of the heat. This is due to the time-varying reactance of the EAF. To highlight this point in another way, if a power factor of ~0.71 were assumed at the 50KA EAF operating point the value would fluctuate +-0.1 around the mid-point which is equivalent to +-14.3%. The importance of this point is that EAF power factor is a time-varying measurement, it can not be assumed that a value of 0.7 during bore-down means the same thing as 0.7 during refine.</p>
+<p><a href="http://www.billybryant.net/pics/steelmaking/pf_location.png"> <img src="{{site.baseurl}}/assets/pf_location.png" alt="pic" style="float:left;margin:0 5px 4px 0;" width="120" height="120"></a> Another frequently overlooked problem with the use of power factor is that the value is location dependent. When discussing power factor, it is imperative to note the location of the measurement. The last chart provides power factor curves taken from the EAF transformer secondary, primary and step-down transformer primary. There is no series reactance in this system. It would be important to provide a curve from the reactor primary if one existed. It can be seen from the chart that power factor decreases heading upstream from the arc. This is intuitive considering that the amount of system reactance increases heading upstream of the load. The curves show that at a constant heat stage the difference in power factor between the EAF transformer secondary and the step-down transformer primary at the 50KA operating-point is approximately 0.06, a significant difference. The exact amount of difference between locations will vary between EAFs due to differences of transformers, cables, cable lengths, bus-work, etc.</p>
+<p>It should also be noted that power factor values are affected by installation of compensation equipment such as harmonic filters and static var compensation. This is another reason that assumptions about the metric can not be applied in a generic way to all EAFs. To summarize the above: </p>
+<ul>
+<li>It is not a good idea to use power factor as a criterion for analysis or selection of EAF operating-points.</li>
+<li>If you must use power factor then ensure that you understand the following:
+<ul>
+<li>It is a time-varying metric. If you are going to utilize it you should develop some method to calculate its value throughout the melting cycle.</li>
+<li>Its value depends on where it is measured. Ensure that you are obtaining measurements from the proper point and that the location of the measurements are communicated appropriately.</li>
+<li>Values of the metric will vary from facility to facility. If you are going to utilize it you should develop some method to calculate its values at individual facilities.</li>
+</ul>
+</li>
+</ul>
+<p>This is the first post about EAF technology of any depth that I have written and published here. My goal is to generate one of these each month or so. I have a long list of topics that I would like to write about, however I am open to suggestions. Additionally any feedback is always welcome. It would be good if these posts generated some discussion. Please feel free to place questions or comments in the comments for the post. This writing is covered by copyright, please ask before using/copying</p>
+<p></body></html></p>

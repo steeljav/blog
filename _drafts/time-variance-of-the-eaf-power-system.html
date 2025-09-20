@@ -1,0 +1,86 @@
+---
+layout: post
+title: Time Variance of the EAF Power System
+date:
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: private
+categories:
+- steeltech
+tags:
+- oldblog
+meta:
+  _edit_last: '98945915'
+  restapi_import_id: 5984dca338881
+  original_post_id: '64'
+  _wp_old_slug: '64'
+author:
+  login: steeljav
+  email: bbryant@gmail.com
+  display_name: billy
+  first_name: Billy
+  last_name: Bryant
+permalink: "/2009/12/29/time-variance-of-the-eaf-power-system/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>This is the second article of a series covering various aspects of AC Electric Arc Furnace (EAF) power system and control technology. The goal of these articles is to provide a high-level analysis of each topic, utilizing more pictures and words than mathematics. More in-depth analysis, training and/or consultation is available. Please see <a href="http://www.bryantsolutions.biz">this page</a> for contact and proposal information. Previous EAF technology articles can be found through <a href="http://www.billybryant.net/blog/rublog.cgi/steelmaking"> this link</a>. Please note the following: </p>
+<ul>
+<li>Each of the chart thumbnails are links to the full size image.</li>
+<li>EAF implies a conventional bucket charged AC EAF unless otherwise noted.</li>
+<li>Feedback is always welcome.</li>
+<li>This writing is covered by copyright. Please ask before copying or using this material.</li>
+</ul>
+<p>This article follows up on the previous topic which covered <a href="http://www.billybryant.net/blog/rublog.cgi/=power_factor"> EAF Power Factor</a> where it was shown that the EAF power factor is a time-varying metric. Most of the electrical parameters in the EAF power system are time-varying. The EAF power system exhibits time-variance due to several characteristics of the process. The time-varying affects of the process on the power system can be generalized as a time-varying arc reactance which is obviously lagging. The physical cause of the reactance is a delay in arc re-ignition during each voltage half-cycle. The arc re-ignition delay results in a lagging delay (phase-shift) of current. A lagging current is the result of inductive reactance.</p>
+<p>The time-variance of the EAF power system can be decomposed into rapid and non-rapid types. The rapid variance and its effects will be discussed in a future article. This article is focused on the non-rapid time-variance.</p>
+<p>Arc reactance is inversely correlated with arc stability. Low arc stability, or equivalently a high degree of distortion of the arc voltage results in a high level of arc reactance. At the beginning of the melt cycle, the arc voltage is highly distorted resulting in high levels of arc reactance. As melting progresses the arcs become more stable resulting in a reduction of arc reactance and much more favorable melting conditions. The amount of time required to transition from rough to stable melting conditions varies highly from EAF to EAF and is heavily influenced by operational practices. Several of what are considered to be operational "best practices" result in improved process performance due to a more rapid reduction of arc reactance. For example: </p>
+<ul>
+<li>
+<u>Foamy Slag</u> - Slag offers a much lower impedance to the arc than air. The reduction in impedance results in a lower arc breakover voltage, which results in less arc voltage distortion, resulting in decreased arc reactance and an increase in arc power. The increase in arc power results in more efficient melting.</li>
+<li>
+<u>Hot Heel</u> - Arcs conduct to hot liquid steel much better than cold scrap. The use of a hot heel decreases the amount of time the arcs conduct through air onto cold scrap. This results in an increase in arc power by mechanisms similar to foamy slag but to a lesser degree. Use of a hot heel results in an increase in arc power and more efficient melting.</li>
+<li>
+<u>Scrap Blending/Recipes</u> - Scrap blending and development of scrap recipes typically results in a decrease in the amount of time required for the electrode tips to bore through the scrap to the hot heel. Decreasing the amount of time the arcs conduct through air onto cold scrap results in an increase in arc power and more efficient melting.</li>
+</ul>
+<p> Operators do not typically understand the link between the "best practice" and its impact on the EAF power system. This is especially true in the case of EAF power supplies utilizing multi-tapped transformers and series reactance which make the impact less visible. In addition, automation of the majority of the process controls has resulted in a greater separation between operations and the power system. It is important to provide training to operations in order to illustrate the impact that a lack of "best practices" can have.
+<p>A hypothetical EAF configuration was developed and modelled in order to demonstrate a typical degree of time-variance of EAF electrical parameters. The hypothetical EAF power supply is a simple uncompensated system utilizing a single EAF transformer tap without additional series reactance. The EAF secondary system was intentionally unbalanced to a degree of 15% in order to make the model as realistic as possible. A three-phase electrical model was used. The values shown are either the three-phase average (eg. secondary current) or the sum of the three individual phases (eg. arc power).</p>
+<p>It is important to understand that only a single EAF transformer tap was used in the calculation of the electrical variables in the charts below. The intent is for the charts to provide an indication of the magnitude of change between high and low levels of arc reactance, or equivalently the difference between rough and stable melting conditions.</p></p>
+<table cellpadding="8" cellspacing="0">
+<tr>
+<td>
+<h5><u>Arc Power</u></h5>
+<p> <a href="http://www.billybryant.net/pics/steelmaking/arc_mw_vs_ht_stg.png"> <img src="{{site.baseurl}}/assets/arc_mw_vs_ht_stg.png" alt="pic" style="float:left;margin:0 5px 4px 0;" width="120" height="120"></a> This chart displays arc power against secondary (arc) current for various melting conditions. This is a very basic chart, but also one of the most important in terms of choosing a suitable operating point for the EAF. The arc power curves are displayed from low to high stability (i.e. high to low arc reactance) for varying values of secondary current, for a single transformer tap. To understand the variance, choose a single secondary current set-point, 50KA is a good choice for this EAF. If the control system were configured to regulate this single set-point throughout the melting cycle (not recommended), the resulting arc power would be approximately 35MW at the start of melting, but would increase to approximately 50MW toward the end of the melting cycle. The translation from low to high stability is not a linear ordered process. The value of arc power will fluctuate between the low and high curves througout the melting process, becoming more constant with melting progress.
+<p>An important observation is the location of the peaks of the arc power curves. The peak of the lowest curve occurs at approximately 63KA. As stability improves the peak translates up and to the left. The magnitude of change and peak location will vary for each EAF due to power system differences, transmission voltage conditions, etc.</p>
+<p>The chart also illustrates the degree to which operational best practices can impact EAF electrical parameters. As an example, at flat bath conditions with a good foamy slag the arc power input at 50KA would be approximately 50MW, with bad slag conditions the arc power input would be approximately 45MW, a difference of 10 percent! This simple example illustrates one more reason for the necessity of investement in the tools and training for good slag control. A 10 percent increase in arc power will result in rapid payback of investement. This increase in arc power and its impact on process efficiency is typically overlooked in payback calculations for investment in slag management tools. </p>
+</td>
+</tr>
+<tr>
+<td>
+<h5><u>Refractory Wear Index (RWI)</u></h5>
+<p> <a href="http://www.billybryant.net/pics/steelmaking/rwi_vs_ht_stg.png"> <img src="{{site.baseurl}}/assets/rwi_vs_ht_stg.png" alt="pic" style="float:left;margin:0 5px 4px 0;" width="120" height="120"></a> Refractory Wear Index (RWI) is a metric that was developed by several researchers simulataneously. The author utilizes the version developed by Schwabe. RWI is an empirical metric used to estimate the radiative energy of the arc. The absolute value of the metric is not of much interest, however, the location of the peak is of interest. Normalized RWI is displayed against secondary (arc) current for various stages of melting. The point to note about this chart is that if we were to choose a 50KA operating point as above, RWI would be maximized initially. However, as stability improves the curve shifts to the left on the order of 5KA. If the operating point were not modified appropriately RWI would decrease on the order of several percent. </td>
+</tr>
+<tr>
+<td>
+<h5><u>Arc Length</u></h5>
+<p> <a href="http://www.billybryant.net/pics/steelmaking/arclen_vs_ht_stg.png"> <img src="{{site.baseurl}}/assets/arclen_vs_ht_stg.png" alt="pic" style="float:left;margin:0 5px 4px 0;" width="120" height="120"></a> This chart displays average arc length in inches against secondary (arc) current for various phases of melting. This is the mean arc length of the three phases. If the operating point of 50KA is again chosen, it is shown that the arc length will vary between 9 and 11.5 inches as melting conditions progress, a variance of approximately 20%. It is important to note that the variance in arc length is highly dependant on the EAF transformer tap voltage. Lower voltage systems (~500v) will display less variance in absolute terms than higher voltage systems (~1000v). </td>
+</tr>
+<tr>
+<td>
+<h5><u>Arc Resistance</u></h5>
+<p> <a href="http://www.billybryant.net/pics/steelmaking/arc_mw_vs_r.png"> <img src="{{site.baseurl}}/assets/arc_mw_vs_r.png" alt="pic" style="float:left;margin:0 5px 4px 0;" width="120" height="120"></a> In this chart the arc power is displayed against arc resistance in Ohms for various phases of melting. Note that arc resistance is one of the few time-invarint electrical parameters in the EAF power system. However, arc power is time-varying due to its dependance on secondary current which is influenced by arc reactance. Additionally, short circuit reactance and short circuit current are time-invariant parameters. Any combination of arc resistance, short circuit reactance or short circuit current results in a time-invariant metric. Any combination of these parameters with a time-varying parameter will result in a time-varying metric. </td>
+</tr>
+<tr>
+<td>
+<h5><u>Secondary Impedance</u></h5>
+<p> <a href="http://www.billybryant.net/pics/steelmaking/arc_mw_vs_z2.png"> <img src="{{site.baseurl}}/assets/arc_mw_vs_z2.png" alt="pic" style="float:left;margin:0 5px 4px 0;" width="120" height="120"></a> The magnitude of EAF transformer secondary impedance in Ohms is frequently used as a control variable. This chart displays arc power against secondary impedance in Ohms. The purpose of this chart is to demonstrate the change in the location of the arc power peak with respect to secondary impedance for various melting conditions. Note that the shift of the arc power peak is less in terms of secondary impedance than in terms of arc resistance. The reason for this can be shown mathematically via sensitivity analysis and is left as an exercise for the reader. </td>
+</tr>
+<tr>
+<td>
+<h5><u>Control Chart</u></h5>
+<p> <a href="http://www.billybryant.net/pics/steelmaking/control_chart.png"> <img src="{{site.baseurl}}/assets/control_chart.png" alt="pic" style="float:left;margin:0 5px 4px 0;" width="120" height="120"></a> This chart displays how constant control of secondary current, arc resistance or arc length correlate to arc power for various melting conditions. Note that this does not imply that a constant value of either of these metrics should be selected and maintained throughout a heat. Different values (and control modes) should be selected as necessary for the various melting stages and process goals. It can be noted from the chart that the choice of constant arc resistance or constant secondary current may be reasonable for this EAF, but the choice in arc length is poor due to the indication that for stable melting conditions the set-point is on the wrong side of the arc power peak. </td>
+</tr>
+</table>
+<p>It has been shown that the majority of EAF electrical parameters are time-varying and that the magnitude of change in value can be significant. The time-variance of the EAF electrical parameters (and EAF process) necessitates modeling of the EAF electrical system in order to achieve optimal process performance.</p>
+<p></body></html></p>

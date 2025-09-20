@@ -1,0 +1,39 @@
+---
+layout: post
+title: Simple Electrode Consumption Model
+date:
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: private
+categories:
+- steeltech
+- work
+tags: []
+meta:
+  _edit_last: '98945915'
+  restapi_import_id: 5984dca338881
+  original_post_id: '1574'
+  _wp_old_slug: '1574'
+author:
+  login: steeljav
+  email: bbryant@gmail.com
+  display_name: billy
+  first_name: Billy
+  last_name: Bryant
+permalink: "/2015/10/10/simple-electrode-consumption-model/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body>
+<p>[latexpage]</p>
+<p>I am frequently asked about modeling EAF electrode consumption. Many papers have been published over the years on this topic and most of the models seem to be a variation of the Bowman model and in my opinion overly complicated.</p>
+<p>Most people seem to be looking for a non-parametric model (although they don't realize it). I have never seen a non-parametric electrode consumption model that will provide results more accurate (or even equivalent accuracy) than a parametric model. Considering the unbelievable variation between EAFs and electrode composition I don't feel it is possible to develop a non-parametric model that would have reasonable accuracy.</p>
+<p>My advice on this (like most Engineering topics) is to keep it as simple as possible. I have utilized the following simple model of electrode consumption for many years now and it has always worked for me. The model I use is the following:</p>
+<p>$EC approx alpha I_2^2t_{pon} + beta t_{poff}$</p>
+<p>where $I_2$ is average EAF secondary current, $t_{pon}$ is the average power on time per heat, $t_{poff}$ is the average power off time per heat and $alpha$ and $beta$ are coefficients to be estimated.</p>
+<p>Collect electrode consumption for the last 12 months or so. If you have more data available and want to use it that is fine as long as there are no really bad months (outliers) or exceptional process conditions (bad electrodes, very cold weather, lots of snow and ice, SVC down, etc.). In general you want months that are as nominal as possible. Remove all of the breaks from the consumption (if breaks are included) and estimate the butt/joint loss (if any) and remove it also. You will also need to calculate and/or collect average secondary current, power on and power off time per heat for each of the months you are going to use the consumption numbers for.</p>
+<p>Assume that the monthly consumption is split evenly between tip sublimation ($I_2^2t_{pon}$) and oxidation ($t_{poff}$). For example, if your consumption for the month of August was 5 Lbs/Ton (not including breaks or butt loss) then you would assume that 2.5 Lbs/Ton was from tip sublimation and 2.5 Lbs/Ton was from Oxidation. If your power off time per heat is high (&gt;~ 40 min/heat) then you may want to increase the split to 60% oxidation 40% tip sublimation.</p>
+<p>Once you have all of these values you can estimate $alpha$ and $beta$ to complete the model. Any linear least squares estimation will do, or you could use something like the slope function in google docs spreadsheet.</p>
+<p>This model is a simple linearization of consumption but will give reasonably accurate estimates for small changes in average secondary current, power on and power off time (and other parameters that influence those factors).</p>
+<p></body></html></p>

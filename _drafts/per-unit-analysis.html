@@ -1,0 +1,137 @@
+---
+layout: post
+title: Per-Unit Analysis
+date:
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: private
+categories:
+- steeltech
+tags: []
+meta:
+  _edit_last: '98945915'
+  restapi_import_id: 5984dca338881
+  original_post_id: '1989'
+  _wp_old_slug: '1989'
+author:
+  login: steeljav
+  email: bbryant@gmail.com
+  display_name: billy
+  first_name: Billy
+  last_name: Bryant
+permalink: "/2016/06/09/per-unit-analysis/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body>
+<p>[latexpage]</p>
+<p>I've been going through some old drives, files, folders, etc. I came across some training material that I developed when I was consulting full time and thought I would post it here. It provides several practical uses of per-unit analysis. Hopefully someone finds this useful.</p>
+<p>Utility power systems utilize many transformers and span many different voltage levels. Power system analysis utilizing base level units rapidly becomes computationally impossible due to the need to reflect impedances across transformer boundaries. Per-unit analysis normalizes the base quantities, eliminating the need for reflection of impedances, enabling standard circuit analysis techniques. EAF power systems usually only span 3 power bases and can be analyzed without resorting to per-unit analysis, however, it is much more difficult and error prone. Additionally, most (if not all) power system equipment is rated using per-unit and it is the common language of Power System Engineers. It is therefore necessary to have a good understanding of per-unit analysis in the context of EAF power systems. The goal of this section is to provide a very high level description of how per-unit analysis works and to provide several practical examples of how it can be used in the context of EAF power systems.</p>
+<p>In a per-unit system four base quantity magnitudes are specified, typically in units of MVA, KV, KA and Ohms:</p>
+<p>Power Base ($S_b$): This is specified as a value of magnitude of apparent power. The standard convention is to specify this value to be 100 MVA on all bases.</p>
+<p>Voltage Base ($V_b$): This is specified as a value of voltage magnitude and is typically specified to be the highest voltage level in the system. All other voltage bases are then dependent upon and calculated using the transformer turns ratios.</p>
+<p>Current Base ($I_b$): This value is calculated at each voltage base using the power and voltage bases.</p>
+<p>Impedance Base ($Z_b$): This value is calculated at each voltage base using the power and voltage bases.</p>
+<p>There are only two independent base quantities in any system being analyzed, the remaining are dependent on transformer ratios. It is standard convention to to specify the power base and highest system voltage as noted above, however, this is not strictly necessary and it is possible to do something like specify the base units according to EAF secondary units. For example: $I_b = 60.0 KA$, $V_b = 1 KV$.</p>
+<p>Circuit parameters are converted to per-unit (pu) by dividing the quantity by the base. For example, a 2.5 Ω reactor is connected in a medium voltage section of an EAF power supply with a $Z_b = 11.9$ Ω. The per-unit value is: $Z_{pu}$ = 2.5 Ω / 11.9 Ω = 0.210 pu.</p>
+<p>Obviously any per-unit value can be converted back into its base units by multiplying by the appropriate base value.</p>
+<p>Several examples follow in order to clarify the practical usefulness of per-unit analysis.</p>
+<p> </p>
+<p>[caption id="attachment_1988" align="aligncenter" width="300"]<a href="https://billybryant.net/wp-content/uploads/2016/06/multi_sd_xfrmrs.png"><img class="size-medium wp-image-1988" src="{{site.baseurl}}/assets/multi_sd_xfrmrs-300x249.png" alt="Figure 1: High To Medium Voltage Parallel Step-Down Transformers" width="300" height="249"></a> Figure 1: High To Medium Voltage Parallel Step-Down Transformers[/caption]</p>
+<p> </p>
+<p><strong>Example 1</strong>:<br />
+Given a power base of $S_b = 100$ MVA and voltage base of $V_b = 345$ KV. Calculate the remaining base quantities.</p>
+<p>Utilizing<br />
+begin{align*}<br />
+I_b &amp;= frac{S_b}{sqrt{3}V_b} \<br />
+I_b &amp;= frac{100}{sqrt{3} cdot 345} = 0.167 KA \<br />
+Z_b &amp;= frac{V_{b}^2}{S_b} = frac{345^2}{100} = 1190.25 Omega<br />
+end{align*}</p>
+<p><strong>Example 2</strong>:<br />
+Assume that the full load secondary current of an EAF transformer is 60 KA at a line to line voltage of 1 KV. Calculate the remaining base units for the low (LV), medium (MV) and high-voltage (HV) bases (see Figure 2).</p>
+<p> </p>
+<p>[caption id="attachment_1987" align="aligncenter" width="300"]<a href="http://billybryant.net/wp-content/uploads/2016/06/eaf_ecd.png"><img class="size-medium wp-image-1987" src="{{site.baseurl}}/assets/eaf_ecd-300x115.png" alt="Figure 2: Multiple Base ECD" width="300" height="115"></a> Figure 2: Multiple Base ECD[/caption]</p>
+<p> </p>
+<p>Start with the low voltage base since the two independent values were specified there.</p>
+<p>begin{align*}<br />
+V_b &amp;= 1 KV \<br />
+I_b &amp;= 60 KA \<br />
+S_b &amp;= sqrt{3}V_bI_b = sqrt{3}cdot 60.0 cdot 1 = 103.9 MVA \<br />
+Z_b &amp;= frac{V_b^2}{S_b} = frac{1}{103.9} = 0.00962 Omega \<br />
+end{align*}</p>
+<p>The power base stays constant and the remaining base parameters of the circuit are fixed by the transformer ratios.</p>
+<p>Medium Voltage (MV) Base:<br />
+begin{align*}<br />
+S_b &amp;= 103.9 MVA \<br />
+V_b &amp;= 1 KV cdot frac{34.5}{1.0} = 34.5 KV \<br />
+I_b &amp;= frac{103.9}{sqrt{3}cdot 34.5} = 1.739 KA \<br />
+Z_b &amp;= frac{34.5^2}{103.9} = 11.46 Omega<br />
+end{align*}</p>
+<p>High Voltage (HV) Base:<br />
+begin{align*}<br />
+S_b &amp;= 103.9 MVA \<br />
+V_b &amp;= 34.5 KVcdot frac{345.0}{34.5} = 345 KV \<br />
+I_b &amp;= frac{103.9}{sqrt{3}cdot 345.0} = 0.1739 KA \<br />
+Z_b &amp;= frac{345^2}{103.9} = 1146 Omega<br />
+end{align*}</p>
+<p><strong>Example 3</strong>:<br />
+Utility companies frequently provide ”short circuit level” in MVA at the high voltage bus of a melt shop EAF supply. What does this actually mean?</p>
+<p>$S = VI$, using a single phase equivalent.<br />
+$S_{sc} = V_{sc}I_{sc} = VI_{sc}$, where sc denotes short circuit and voltage is assumed constant at short circuit.<br />
+$S_{sc} pu = I_{sc} pu$, convert to per-unit and utilize the fact that source voltage = 1 in per-unit.<br />
+$Z_{sc} pu = frac{V}{I_{sc}} pu = frac{1}{I_{sc}} pu = frac{1}{S_{sc}} pu$<br />
+$frac{1}{S_{sc}pu} = frac{1}{I_{sc}pu} = Z_{sc} pu$</p>
+<p>This is an incredible result and is very important in power system analysis. It shows that in a per-unit system the short circuit apparent power is equivalent to the short circuit current and these are both reciprocal to the short circuit impedance.</p>
+<p>In other words, the utility is providing you with an equivalent impedance of the transmission system at the high voltage bus. As an example, assume a utility provides 5000 MVA at a 345 KV bus. A 100 MVA power base is standard convention and is assumed. What is the magnitude of the per-unit impedance?</p>
+<p>$Z_{pu} = frac{S_b}{S_{sc}} = frac{100}{5000} pu = 0.02 pu$</p>
+<p>What if we are interested in the short circuit current at the high voltage base? Assume that $V_b = 345 KV$ and noting that</p>
+<p>$I_b = frac{100}{sqrt{3}cdot 345} = 0.167 KA$, $I_{sc} pu = frac{S_{sc}}{S_b} = frac{5000}{100} = 50 pu$</p>
+<p>the short circuit current at the high voltage base is easily calculated:</p>
+<p>$HV I_{sc} = I_{sc} pucdot I_b = 50cdot 0.167 KA = 8.35 KA$</p>
+<p>It is always preferable to be provided with the complex impedance of the transmission system in per-unit because it is more accurate. However, utilities frequently only provide the magnitude of the short circuit apparent power as previously discussed. What if we are interested in the complex impedance and not just the magnitude?</p>
+<p>In the USA standard X/R ratios are sometimes used in order to estimate the transmission system resistance and inductive reactance when only provided with the apparent power magnitude ($S_{sc}$ MVA). Common guidelines are as follows:</p>
+<p>Voltage Class &lt; 161 KV use X/R = 10 / 1<br />
+Voltage Class &gt; 161 KV use X/R = 20 / 1</p>
+<p>Using the 5000 MVA 161 KV values from above with an X/R ratio of 20 / 1:</p>
+<p>$x_{pu} = z_{pu}sqrt{(X/R)^2 / (1 + (X/R)^2)} = 0.02sqrt{0.998} = 0.199 pu$<br />
+$r_{pu} = x_{pu} / (X/R) = 0.199 / 20 = 0.001 pu$</p>
+<p><strong>Example 4</strong>:<br />
+Many of the approximations and rules of thumb utilized by Engineers for EAF power systems require knowledge of the short circuit level at the medium voltage bus. It is frequently necessary to reflect the utility provided short circuit level at the high voltage bus to the medium voltage bus through one or more step-down transformers (see Figure 1).</p>
+<p>A generalized formula can be derived to reflect short-circuit MVA from a high to medium voltage base (or more generally from one base to another through an equivalent per-unit impedance). Assuming there is only a single step-down transformer with the following specifications: 100 MVA, 11% impedance, 345 KV / 34.5 KV and a short circuit level of 10,0000 MVA at the high voltage bus:</p>
+<p>$Z_1 pu = frac{S_b}{S_{sc1}} pu$ where $Z_1$ is the impedance of the transmission system and $S_{sc1}$ is the short-circuit MVA at the high voltage bus.</p>
+<p>$Z_t pu = xfrac{S_b}{S_t}$ where x is the transformer per-unit impedance and $S_t$ is the transformer MVA.</p>
+<p>$Z_{eq} = Z_t pu + Z_1 pu = frac{S_b}{S_{sc1}} + xfrac{S_b}{S_t} = [S_tS_b + xfrac{S_b}{S_{sc1}}] / [S_{sc1}S_t]$</p>
+<p>where $Z_{eq}$ is the equivalent impedance of the transmission system and the step-down transformer.</p>
+<p>$S_{sc2} = frac{S_b}{Z_{eq}} = [S_bS_{sc1}S_t] / [S_bS_t + xfrac{S_b}{S_{sc1}}]$</p>
+<p>where $S_{sc2}$ is the short circuit MVA at the medium voltage bus.</p>
+<p>$S_{sc2} = S_{sc1} [frac{S_t}{S_t + xS_{sc1}}] = 10,000cdot [frac{100}{100 + 0.11cdot 10,000}] = 833.3 MVA$</p>
+<p><strong>Example 5</strong>:<br />
+Power system components are normally specified in per-unit on their nominal base rating. If the equipment’s nominal base matches the installation then the nominal values can be used without modification. However, this is not usually the case and equipment per-unit values frequently need to be calculated on a different base.</p>
+<p>One situation that comes up frequently is when a transformer is installed in a lower voltage class. A generalized formula can be derived to transfer the rated per-unit impedance to the new base. This is accomplished by calculating the impedance of the component (in Ohms) and then calculating the per-unit value on the new base.</p>
+<p>$Z = Z_{pu}frac{V_{b}^2}{S_b}Omega$, where $V_b$, $S_b$ and $Z_{pu}$<br />
+are the base ratings for the component (transformer in this case).</p>
+<p>$Z_{pu new} = Zcdot frac{S_{b new}}{V_{b new}^2} pu$</p>
+<p>where $S_{b new}$ and $V_{b new}$ are the base parameters for the new base.</p>
+<p>Combining the above results in:</p>
+<p>$Z_{pu new} = Z_{pu old}cdot frac{S_{b new}}{S_{b old}}cdot (frac{V_{b old}}{V_{b new}})^2 pu$</p>
+<p>As an example assume that a transformer with a nominal base rating of 140 MVA, 7%, 46 KV is installed in a 100 MVA, 34.5 KV base system. Calculate the new per-unit impedance value.</p>
+<p>$Z_{pu new} = 0.07cdot (frac{100}{140})cdot (frac{46}{34.5})^2 pu = 8.89%$</p>
+<p><strong>Example 6</strong>:<br />
+One or more transformers of slightly differing sizes and/or impedances are sometimes used to form a step-down bank as in Figure 1. It is simple to calculate the current division between the transformers utilizing per-unit. Recall that admittances in parallel add:</p>
+<p>$Y_{total} = Z_{1}^{-1} + Z_{2}^{-1} + cdot cdot cdot + Z_{n}^{-1}$ siemens</p>
+<p>Note that the per-unit admittance of a transformer is:</p>
+<p>$Y = frac{S_b}{xV_{b}^2}$ in siemens where x is the per-unit impedance of the transformer.</p>
+<p>Recall that the current through a single branch of a current divider is calculated using</p>
+<p>$I_n = frac{Y_n}{Y_{total}}cdot I_L$ where $I_n$ is the current through the branch, $Y_n$ is the admittance of the branch and $I_L$ is the total load current.</p>
+<p>Combining the above results in:</p>
+<p>$I_n = I_L [frac{S_{nb}}{x_nV_{b}^2}] / [frac{S_{1b}}{x_1V_{b}^2} + frac{S_{2b}}{x_2V_{b}^2} + cdot cdot cdot]$</p>
+<p>since all of the transformers are on the same voltage base the $V_{b}^2$ terms can be eliminated resulting in</p>
+<p>$I_n = I_L [frac{S_{nb}}{x_n}] / [frac{S_{1b}}{x_1} + frac{S_{2b}}{x_2} + cdot cdot cdot]$</p>
+<p>Assume the following two transformers are connected in parallel with a total primary load current of 1 KA:</p>
+<p>T1: 30 MVA, 9%<br />
+T2: 50 MVA, 11%</p>
+<p>The current through each transformer is calculated as follows using the formula above:</p>
+<p>$I_1 = 1 KA cdot (frac{30/0.09}{30/0.09 + 50/0.11}) = 423 A$<br />
+$I_2 = 1 KA cdot (frac{50/0.11}{30/0.09 + 50/0.11}) = 578 A$</p>
+<p></body></html></p>

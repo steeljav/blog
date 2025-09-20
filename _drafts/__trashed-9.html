@@ -1,0 +1,38 @@
+---
+layout: post
+title: Three Phase vs Two Phase Dip Test
+date:
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: draft
+categories:
+- other
+tags: []
+meta:
+  _edit_last: '98945915'
+  restapi_import_id: 5984dca338881
+  original_post_id: '1661'
+  _wp_old_slug: '1661'
+  _wp_desired_post_slug: ''
+author:
+  login: steeljav
+  email: bbryant@gmail.com
+  display_name: billy
+  first_name: Billy
+  last_name: Bryant
+permalink: "/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body>
+<p>Tired of people arguing about this without the mathematics. Do the math for two phase dip test with an error voltage included for each leg to show how it cancels the alleged error voltage. Then do the math for a three phase dip test with the error voltage included in the measurements to see what the impact is.</p>
+<p>Address the instrumentation issues with PT and CT accuracies and estimate what the resolution in measurement is and if it even matters which form of dip test is done.</p>
+<p>Discuss what a 2-phase test without the error voltage may be good for, and what a 3-phase test may be good for (regulation???, instruments). Discuss the history of the test and how the instrumentation used to be different, etc.</p>
+<p>The reactance changes with heat stage and stability levels. Error voltage is highest during bore-in rough melting so having stable 3 or 2 phase test probably doesn't mean much in terms of control during rough melting.</p>
+<p>Meters are wired VLN. Are VLN voltages used in meter calcs or do the meters calculate VLL? The 2-phase test only eliminates error voltage for ?? voltage measurements.</p>
+<p>Why do you get negative resistance sometimes?</p>
+<p>Check the ion and SEL docs to see if they provide line to line voltages. These should be used for the dip tests. Check your math and compare it against the IEC standard. There was a difference between their calculation and yours and it may have been Vll vs what you did with power and current. Probably better to use Vll if possible with the 2 phase test to get rid of the error voltage. This may not be possible if line to reference voltages are used.</p>
+<p>Write paper discussing typical PT/CT/Meter accuracy and whether or not it is good enough to distinguish difference between 2-phase and 3-phase dip testing (if a difference actually exists)</p>
+<p>Calculate current measurement accuracy and resolution for 734p meter with current clamps. Do same calculation for ION meter. Is the resolution/accuracy good enough to use these measurements to adapt power system models? What about estimation of secondary impedance?</p>
+<p></body></html></p>
