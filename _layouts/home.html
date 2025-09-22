@@ -1,0 +1,64 @@
+---
+layout: base
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if paginator.posts and paginator.total_pages > 1 -%}
+    <ul class="pagination">
+      {%- if paginator.previous_page %}
+        <li><a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a></li>
+      {%- endif %}
+      {%- for page_number in (1..paginator.total_pages) %}
+        <li>
+          <a href="{{ paginator.page_path | relative_url | replace: ':num', page_number }}" {% if page_number == paginator.page %}class="active"{% endif %}>{{ page_number }}</a>
+        </li>
+      {%- endfor %}
+      {%- if paginator.next_page %}
+        <li><a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a></li>
+      {%- endif %}
+    </ul>
+  {%- endif -%}
+
+  <ul class="post-list">
+    {%- for post in paginator.posts %}
+      <li>
+        {%- if post.featured_image %}
+          <a href="{{ post.url | relative_url }}">
+            <img src="{{ post.featured_image | relative_url }}" alt="Featured image for {{ post.title }}" style="max-width:300px; height:auto; display:block; margin-bottom:1em;">
+          </a>
+        {%- endif %}
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h2>
+        {%- if site.show_excerpts %}
+          {{ post.excerpt }}
+        {%- endif %}
+      </li>
+    {%- endfor %}
+  </ul>
+
+  {%- if paginator.posts and paginator.total_pages > 1 -%}
+    <ul class="pagination">
+      {%- if paginator.previous_page %}
+        <li><a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a></li>
+      {%- endif %}
+      {%- for page_number in (1..paginator.total_pages) %}
+        <li>
+          <a href="{{ paginator.page_path | relative_url | replace: ':num', page_number }}" {% if page_number == paginator.page %}class="active"{% endif %}>{{ page_number }}</a>
+        </li>
+      {%- endfor %}
+      {%- if paginator.next_page %}
+        <li><a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a></li>
+      {%- endif %}
+    </ul>
+  {%- endif -%}
+
+</div>
+
